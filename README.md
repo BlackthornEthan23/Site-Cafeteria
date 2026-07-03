@@ -39,13 +39,14 @@ O projeto foi pensado para oferecer uma navegação intuitiva e uma experiência
 - 📍 Endereço: seção destinada à localização e contato.
 
 ### 🔄 Fluxo de navegação
-```mermaid
-flowchart LR
-    A[Home] --> B[Sobre]
-    A --> C[Menu]
-    A --> D[Avaliações]
-    A --> E[Endereço]
-```
+A estrutura da página segue este fluxo simples:
+
+- Home → Sobre
+- Home → Menu
+- Home → Avaliações
+- Home → Endereço
+
+Isso ajuda a visualizar a organização das seções principais do projeto.
 
 ---
 
