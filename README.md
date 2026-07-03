@@ -39,14 +39,15 @@ O projeto foi pensado para oferecer uma navegação intuitiva e uma experiência
 - 📍 Endereço: seção destinada à localização e contato.
 
 ### 🔄 Fluxo de navegação
-A estrutura da página segue este fluxo simples:
+A navegação do site é organizada de forma direta, permitindo acessar as principais seções a partir do menu principal:
 
-- Home → Sobre
-- Home → Menu
-- Home → Avaliações
-- Home → Endereço
+- Home → Introdução inicial da cafeteria
+- Sobre → Informações sobre a marca e o conceito
+- Menu → Apresentação dos produtos e preços
+- Avaliações → Espaço para feedbacks e opiniões
+- Endereço → Localização e contato
 
-Isso ajuda a visualizar a organização das seções principais do projeto.
+Essa estrutura ajuda a orientar o usuário durante a visita ao site.
 
 ---
 
