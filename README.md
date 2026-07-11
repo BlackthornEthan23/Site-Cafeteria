@@ -1,114 +1,386 @@
-# ☕ Site Cafeteria
+# 🍽️ Trindade Restaurante - Sistema de Ecommerce
 
-## 📌 Visão geral
-Este projeto é um site estático de uma cafeteria, criado com o objetivo de apresentar a marca, mostrar o menu principal e oferecer uma experiência visual agradável para os visitantes. Atualmente, a estrutura funciona como uma landing page institucional, com foco em identidade visual, navegação simples e apresentação de conteúdo.
+<div align="center">
 
----
+**[🌐 Visite o Site](https://blackthornethan23.github.io/site-trindade-restaurante/)**
 
-## 🧭 Objetivos do projeto
-Os objetivos principais deste projeto são:
-
-- Criar uma presença online para a cafeteria;
-- Apresentar o ambiente, a proposta da marca e os principais produtos;
-- Exibir um layout visual atrativo e profissional;
-- Organizar as informações em seções claras, como início, sobre, menu e endereço;
-- Servir como base para futuras evoluções com interatividade e funcionalidades reais.
+</div>
 
 ---
 
-## 🗺️ Estrutura atual do projeto
-A estrutura atual é simples e organizada da seguinte forma:
+## 📋 Sobre o Projeto
 
-```text
-Site Cafeteria/
-├── index.html      # Estrutura principal da página
-├── style.css       # Estilização visual do site
-├── img/            # Imagens utilizadas no layout
-└── README.md       # Documentação do projeto
+Trindade Restaurante é uma **plataforma de ecommerce moderna e intuitiva** desenvolvida para restaurantes que desejam oferecer serviço de pedidos online. O sistema foi projetado com foco em **experiência do usuário (UX)**, **responsividade mobile-first** e **facilidade de uso**.
+
+A aplicação integra-se perfeitamente com o **WhatsApp Business**, permitindo que os pedidos sejam finalizados e entregues diretamente ao proprietário do restaurante através de uma conversa automatizada.
+
+---
+
+## ✨ Funcionalidades Principais
+
+### 🛒 Gerenciamento de Carrinho
+- ✅ Adicionar/remover itens do carrinho
+- ✅ Ajustar quantidade de produtos
+- ✅ Visualização em tempo real do total
+- ✅ Animação visual ao adicionar produtos (efeito "voar" para o carrinho)
+- ✅ Banner flutuante no mobile com acesso rápido ao carrinho
+
+### 🍕 Catálogo de Produtos
+- ✅ 6 categorias disponíveis (Pizzas, Massas, Lanches, Sobremesas, Bebidas)
+- ✅ Filtragem por categoria
+- ✅ Busca por nome ou descrição do prato
+- ✅ Exibição responsiva em grid adaptativo
+- ✅ 10 produtos de exemplo com imagens de alta qualidade
+
+### 🚚 Opções de Entrega
+- **Entrega Domiciliar**: Com cálculo de endereço (CEP, endereço completo)
+- **Retirada na Loja**: Com agendamento de data e hora
+
+### 💳 Formas de Pagamento
+- ✅ PIX
+- ✅ Cartão de Crédito
+- ✅ Cartão de Débito
+- ✅ Dinheiro (com opção de informar troco)
+
+### 🎟️ Sistema de Cupons
+- ✅ Validação de cupom promocional
+- ✅ Desconto percentual
+- ✅ Feedback visual de sucesso/erro
+- ✅ Cupom padrão: `DESCONTO10` (10% de desconto)
+
+### 📱 Design Responsivo
+- ✅ Mobile-first
+- ✅ Otimizado para tablets e desktops
+- ✅ Interface adaptativa em todos os tamanhos de tela
+
+### 🔍 Busca Inteligente
+- ✅ Busca em tempo real por nome do prato
+- ✅ Busca também na descrição do produto
+- ✅ Filtragem integrada com categorias
+
+---
+
+## 🎨 Design e Cores
+
+### Paleta de Cores
+```
+Cor Primária:      #b33a2f (Vermelho Quente)
+Cor Secundária:    #2d201b (Marrom Escuro)
+Cor de Destaque:   #f4a261 (Laranja Aquecido)
+Texto Principal:   #2f241d (Marrom Escuro)
+Fundo:             #f8f4ee (Bege Claro)
+```
+
+### Tipografia
+- Font Family: `Segoe UI, Tahoma, Geneva, Verdana, sans-serif`
+- Ícones: Font Awesome 6.5.1
+
+---
+
+## 📂 Estrutura de Arquivos
+
+```
+restaurante-ecommerce/
+│
+├── index.html          # Estrutura HTML principal
+├── script.js           # Lógica JavaScript (interatividade)
+├── style.css           # Estilos CSS (design e layout)
+└── README.md           # Este arquivo
 ```
 
 ---
 
-## 🧩 Elementos visuais e organização da página
-O projeto foi pensado para oferecer uma navegação intuitiva e uma experiência visual bem definida. As principais seções são:
+## 🚀 Como Usar
 
-- 🏠 Home: introdução visual com chamada principal;
-- ℹ️ Sobre nós: apresentação da proposta da cafeteria;
-- 🍰 Menu: destaque dos produtos disponíveis;
-- ⭐ Avaliações: espaço preparado para futuras opiniões e depoimentos;
-- 📍 Endereço: seção destinada à localização e contato.
+### 1️⃣ Abrir o Projeto
+Simplesmente abra o arquivo `index.html` em seu navegador:
+```bash
+# Windows
+start index.html
 
-### 🔄 Fluxo de navegação
-A navegação do site é organizada de forma direta, permitindo acessar as principais seções a partir do menu principal:
+# macOS
+open index.html
 
-- Home → Introdução inicial da cafeteria
-- Sobre → Informações sobre a marca e o conceito
-- Menu → Apresentação dos produtos e preços
-- Avaliações → Espaço para feedbacks e opiniões
-- Endereço → Localização e contato
+# Linux
+xdg-open index.html
+```
 
-Essa estrutura ajuda a orientar o usuário durante a visita ao site.
+### 2️⃣ Navegar no Menu
+- 🏠 **Logo**: Clique para voltar ao topo da página
+- 🔍 **Busca**: Digite o nome do prato para filtrar
+- 📂 **Categorias**: Clique nas abas para filtrar por tipo de comida
+- 🛒 **Carrinho**: Veja seus itens selecionados
 
----
-
-## 🛠️ Tecnologias utilizadas
-No momento, o projeto utiliza:
-
-- HTML5 para estruturação do conteúdo;
-- CSS3 para estilização, layout e responsividade básica;
-- Imagens locais para composição visual.
-
----
-
-## ⚠️ Limitações atuais
-Apesar de já possuir uma estrutura bem organizada, o projeto ainda apresenta algumas limitações:
-
-- Não há interação dinâmica com o usuário;
-- Não existe carrinho funcional;
-- Os botões ainda são básicos e não realizam ações reais;
-- O conteúdo é estático, sem integração com banco de dados ou backend;
-- A navegação é visualmente simples e ainda não possui recursos avançados;
-- Não há validação de formulário ou elementos interativos completos.
+### 3️⃣ Fazer um Pedido
+1. Escolha os pratos desejados
+2. Ajuste as quantidades
+3. Clique em "Ver Carrinho"
+4. Selecione tipo de entrega (entrega ou retirada)
+5. Preencha seus dados
+6. Selecione forma de pagamento
+7. (Opcional) Aplique cupom de desconto
+8. Clique em "Finalizar Pedido" para enviar via WhatsApp
 
 ---
 
-## 🚀 Futuras implementações com JavaScript
-O projeto foi estruturado para evoluir com mais recursos no futuro. A implementação com JavaScript poderá incluir:
+## 💻 Estrutura do Código
 
-- Menu mobile interativo;
-- Carrinho de compras funcional;
-- Efeito de destaque em produtos;
-- Slides ou carrosel de imagens;
-- Validação de formulário;
-- Animações mais dinâmicas;
-- Interatividade em botões e navegação.
+### JavaScript (script.js)
 
-### 📋 Plano de evolução
-```text
-[Atual] Página estática e visual
-   ↓
-[Etapa 1] Adição de interatividade básica com JavaScript
-   ↓
-[Etapa 2] Menu e carrinho dinâmico
-   ↓
-[Etapa 3] Melhorias de experiência e responsividade
+#### Principais Funções:
+- `filtrarEMostrarProdutos()` - Filtra produtos por categoria/busca
+- `adicionarAoCarrinho()` - Adiciona item ao carrinho com animação
+- `atualizarCarrinho()` - Recalcula totais e atualiza UI
+- `applyCoupon()` - Valida e aplica cupons de desconto
+- `finalizarPedido()` - Gera mensagem e abre WhatsApp
+- `abrirCarrinho()` / `fecharCarrinho()` - Controla visibilidade do carrinho
+
+#### Dados de Produtos:
+```javascript
+{
+  id: 1,
+  nome: "Pizza Margherita",
+  categoria: "pizzas",
+  preco: 49.90,
+  imagem: "url_da_imagem",
+  descricao: "Descrição do prato"
+}
+```
+
+#### Validação de Cupons:
+```javascript
+validCoupons = [
+  { code: "DESCONTO10", type: "percentage", value: 10 }
+]
+```
+
+### CSS (style.css)
+
+#### Variáveis CSS Customizáveis:
+```css
+:root {
+  --primary-color: #b33a2f;      /* Vermelho */
+  --secondary-color: #2d201b;    /* Marrom */
+  --accent-color: #f4a261;       /* Laranja */
+  --text-color: #2f241d;         /* Texto */
+  --light-gray: #f8f4ee;         /* Fundo */
+  --border-color: #eadfd9;       /* Bordas */
+  --success-color: #2e8b57;      /* Sucesso */
+  --error-color: #d9480f;        /* Erro */
+}
+```
+
+#### Classes Principais:
+- `.products-container` - Grid de produtos responsivo
+- `.cart-sidebar` - Menu do carrinho deslizante
+- `.cart-overlay` - Overlay semitransparente
+- `.product-card` - Card individual do produto
+
+---
+
+## 🔧 Personalização
+
+### Adicionar Novos Produtos
+Edite o array `produtos` em `script.js`:
+
+```javascript
+{
+  id: 11,
+  nome: "Seu Prato",
+  categoria: "sua_categoria",
+  preco: 29.90,
+  imagem: "https://seu-link-da-imagem.jpg",
+  descricao: "Descrição detalhada"
+}
+```
+
+### Modificar Cores
+Altere as variáveis CSS em `style.css`:
+
+```css
+:root {
+  --primary-color: #seu_cor_aqui;
+}
+```
+
+### Adicionar Cupons
+Edite o array `validCoupons` em `script.js`:
+
+```javascript
+validCoupons = [
+  { code: "PRIMEIRACOMPRA", type: "percentage", value: 15 },
+  { code: "DESCONTO10", type: "percentage", value: 10 }
+]
+```
+
+### Alterar Número WhatsApp
+Localize a variável `numeroWhatsApp` em `script.js`:
+
+```javascript
+const numeroWhatsApp = "55XXXXXXXXXXXX"; // Seu número com código do país
 ```
 
 ---
 
-## 🎯 Público-alvo
-Este projeto é voltado para:
+## 📱 Responsividade
 
-- Clientes da cafeteria;
-- Visitantes que procuram conhecer a marca online;
-- Pessoas interessadas em um exemplo de site institucional simples e bem organizado.
+O projeto é totalmente **mobile-first** e otimizado para:
+- 📱 Smartphones (320px+)
+- 📱 Tablets (768px+)
+- 💻 Desktops (1200px+)
+
+#### Breakpoints Principais:
+- **Mobile**: até 768px
+- **Tablet**: 768px a 1024px
+- **Desktop**: 1024px+
 
 ---
 
-## ✅ Resumo rápido
-Este projeto representa uma base sólida para uma cafeteria online, com visual limpo, estrutura organizada e espaço para crescimento. Atualmente, ele funciona como uma apresentação inicial do negócio, mas tem potencial para se transformar em um site mais completo e interativo com o uso de JavaScript.
+## 🎯 Fluxo de Pedido
+
+```
+Seleção de Produtos
+    ↓
+Adicionar ao Carrinho
+    ↓
+Visualizar Carrinho
+    ↓
+Escolher Tipo de Entrega
+    ↓
+Preencher Dados Pessoais
+    ↓
+Selecionar Forma de Pagamento
+    ↓
+(Opcional) Aplicar Cupom
+    ↓
+Finalizar Pedido
+    ↓
+Redirecionar para WhatsApp
+    ↓
+Restaurante Recebe Mensagem Formatada
+```
 
 ---
 
-## 💡 Observação final
-O projeto está em uma fase inicial, porém bem estruturado para evoluir. A ideia é transformar uma página simples em uma experiência mais funcional, moderna e atrativa para o público.
+## 🛠️ Tecnologias Utilizadas
+
+| Tecnologia | Versão | Propósito |
+|-----------|--------|----------|
+| **HTML5** | - | Estrutura |
+| **CSS3** | - | Estilos e Layout |
+| **JavaScript (Vanilla)** | ES6+ | Interatividade |
+| **Font Awesome** | 6.5.1 | Ícones |
+| **Unsplash API** | - | Imagens de Produtos |
+
+---
+
+## 📊 Resumo de Funcionalidades
+
+### ✅ Totalmente Implementado
+- [x] Sistema de carrinho com CRUD completo
+- [x] Filtragem por categoria
+- [x] Busca em tempo real
+- [x] Entrega e retirada agendada
+- [x] Múltiplas formas de pagamento
+- [x] Sistema de cupons
+- [x] Integração WhatsApp
+- [x] Design responsivo
+- [x] Animações suaves
+- [x] Validação de formulários
+
+---
+
+## 🔐 Segurança e Validação
+
+- ✅ Validação de campos obrigatórios
+- ✅ Formatação de telefone
+- ✅ Validação de CEP
+- ✅ Confirmação de quantidade mínima no carrinho
+- ✅ Feedback visual de erros
+- ✅ Sanitização de entrada do usuário
+
+---
+
+## 🎬 Animações
+
+- **Efeito Voar**: Imagem do produto "voa" para o ícone do carrinho
+- **Deslizar**: Menu lateral do carrinho desliza suavemente
+- **Transições**: Hover effects nos botões e cards
+- **Fade**: Aparecer/desaparecer com suavidade
+
+---
+
+## 📞 Integração WhatsApp
+
+O sistema envia mensagens formatadas para o WhatsApp Business com:
+- ✅ Listagem completa de itens
+- ✅ Quantidade de cada produto
+- ✅ Subtotal e desconto aplicado
+- ✅ Total final
+- ✅ Dados de entrega ou retirada
+- ✅ Forma de pagamento selecionada
+
+---
+
+## 🐛 Troubleshooting
+
+### Carrinho não atualiza
+- Verifique se JavaScript está ativado no navegador
+- Limpe cache do navegador (Ctrl+Shift+Del)
+
+### Imagens não carregam
+- Verifique conexão com internet
+- As imagens vêm da Unsplash API (requer internet)
+
+### WhatsApp não abre
+- Certifique-se de que o número está no formato internacional (55XXXXXXXXXX)
+- Verifique se tem WhatsApp instalado ou acesso web
+
+### Formulário não valida
+- Preencha TODOS os campos obrigatórios (marcados com *)
+- Nomes devem ter sobrenome
+
+---
+
+## 📈 Próximas Melhorias Sugeridas
+
+- [ ] Integração com API de pagamento (Stripe, MercadoPago)
+- [ ] Sistema de autenticação de usuários
+- [ ] Histórico de pedidos
+- [ ] Notificações push
+- [ ] Admin painel para gerenciar produtos
+- [ ] Dashboard de vendas
+- [ ] Sistema de avaliação de produtos
+- [ ] Integração com sistemas de entrega
+
+---
+
+## 📝 Licença
+
+Projeto desenvolvido como portfólio de web development. Livre para uso e modificação.
+
+---
+
+## 👤 Créditos
+
+**Desenvolvido com ❤️ para Trindade Restaurante**
+
+---
+
+## 📧 Contato e Suporte
+
+Para dúvidas, sugestões ou relatórios de bugs, entre em contato através dos canais abaixo:
+
+- 📱 WhatsApp: [Número do Restaurante]
+- 📧 Email: [Email para suporte]
+- 🌐 Site: [https://blackthornethan23.github.io/site-trindade-restaurante/](https://blackthornethan23.github.io/site-trindade-restaurante/)
+
+---
+
+<div align="center">
+
+### ⭐ Se este projeto foi útil, considere deixar uma estrela!
+
+**Desenvolvido com dedicação, inovação e qualidade** 🚀
+
+</div>

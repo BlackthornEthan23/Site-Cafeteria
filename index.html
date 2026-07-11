@@ -1,131 +1,153 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
-        rel="stylesheet">
+    <meta name="description" content="Trindade Restaurante - Peça online pizzas, massas, lanches, sobremesas e bebidas com entrega rápida ou retirada no local. Faça seu pedido pelo WhatsApp!">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='20' font-size='20'>🍽️</text></svg>">
+
+    <meta property="og:title" content="Trindade Restaurante">
+    <meta property="og:description" content="Peça online pizzas, massas, lanches, sobremesas e bebidas com entrega rápida ou retirada no local.">
+    <meta property="og:type" content="website">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="style.css">
-    <title>Cafeteriat</title>
+    <title>Trindade Restaurante</title>
 </head>
 
 <body>
-    <header class="header">
-
-        <section>
-
-            <a href="#" class="logo">
-                <img src="./img/logo.png" alt="logo do site">
-
-            </a>
-
-            <nav class="nav">
-                <a href="#home">Home</a>
-                <a href="#about">Sobre</a>
-                <a href="#menu">Menu</a>
-                <a href="#review">Avaliações</a>
-                <a href="#address">Endereço</a>
-            </nav>
-
-            <div class="icon">
-                <img width="30" height="30" src="https://img.icons8.com/ios-filled/30/ffffff/search--v1.png"
-                    alt="search--v1" />
-
-                <img width="30" height="30" src="https://img.icons8.com/ios-filled/30/ffffff/shopping-cart.png"
-                    alt="shopping-cart" />
-            </div>
-
-        </section>
-
+    <header id="topo">
+        <a href="#topo" class="logo" style="text-decoration: none;"> <i class="fa-solid fa-utensils"></i>
+            <h1>Trindade Restaurante</h1>
+        </a>
+        <div class="search-container"> <input placeholder="Buscar prato..." class="search-input" aria-label="Buscar prato"> <i
+                class="fa-solid fa-magnifying-glass" aria-hidden="true"></i> </div>
+        <div class="cart-icon" role="button" tabindex="0" aria-label="Abrir carrinho"> <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i> <span class="cart-badge">0</span> </div>
     </header>
 
-    <div class="home-container">
-        <section id="home">
-            <div class="content">
-                <h3>CODE COM O MELHOR CAFÉ DA REGIÃO!</h3>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deserunt incidunt nisi eos ipsum. Explicabo
-                    a impedit excepturi aspernatur, eaque perspiciatis similique vel quas ullam natus, corrupti aperiam
-                    quasi mollitia quis!</p>
-                <a href="#" class="btn">Pegue o seu Agora!</a>
-            </div>
-
-        </section>
-
+    <div class="categories-container">
+        <nav class="categories-bar">
+            <button class="category-btn active" data-category="all"><i class="fa-solid fa-border-all"></i>
+                Todos</button>
+            <button class="category-btn" data-category="pizzas"><i class="fa-solid fa-pizza-slice"></i>
+                Pizzas</button>
+            <button class="category-btn" data-category="massas"><i class="fa-solid fa-bowl-food"></i> Massas</button>
+            <button class="category-btn" data-category="lanches"><i class="fa-solid fa-burger"></i>
+                Lanches</button>
+            <button class="category-btn" data-category="sobremesas"><i class="fa-solid fa-ice-cream"></i>
+                Sobremesas</button>
+            <button class="category-btn" data-category="bebidas"><i class="fa-solid fa-mug-saucer"></i>
+                Bebidas</button>
+        </nav>
     </div>
 
-    <section class="about" id="about">
-        <h2 class="title">Sobre <span>Nós</span></h2>
-        <div class="row">
-            <div class="container-img">
-                <img src="./img/about-img.jpg" alt="imagem sobre nos">
-            </div>
-
-            <div class="container">
-                <h3>
-                    Ouqe faz nosso café especial</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum quos, ratione quidem nesciunt maiores
-                    nam vel, similique veniam minima et quam! Dolore neque enim autem numquam rem quaerat iste quos.</p>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Porro deleniti animi ea excepturi. Impedit
-                    quidem cupiditate temporibus aspernatur a nobis dignissimos magnam ullam, consequatur magni
-                    incidunt! Omnis sapiente assumenda nulla?</p>
-
-                <a href="#" class="btn">Saiba mais!</a>
-
-            </div>
-
-        </div>
+    <section class="hero-section">
+        <h2>Pratos especiais da semana</h2>
+        <p>Sabores artesanais, entrega rápida e atendimento acolhedor.</p>
     </section>
 
-    <section class="menu" id="menu">
-        <h2 class="title">Nosso <span>Menu</span></h2>
+    <main class="products">
+        <div class="products-container"></div>
+    </main>
 
-        <div class="box-container">
+    <div class="cart-overlay"></div>
+    <aside class="cart-sidebar">
+        <div class="cart-header">
+            <h3>Seu Pedido <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i></h3> <button
+                class="close-cart-btn" aria-label="Fechar carrinho">&times;</button>
+        </div>
+        <div class="cart-body"></div>
 
-            <div class="box">
-                <img src="./img/menu-1.png" alt="item 1">
-                <h3>Café coado</h3>
-                <div class="price">R$ 15,99 <span>R$ 20,99</span></div>
-                <a href="#" class="btn">Adicionar ao carrinho</a>
-            </div>
-
-            <div class="box">
-                 <img src="./img/menu-2.png" alt="item 2">
-                 <h3>Café coado</h3>
-                 <div class="price">R$ 15,99 <span>R$ 20,99</span></div>
-                 <a href="#" class="btn">Adicionar ao carrinho</a>
-            </div>
-            <div class="box">
-                 <img src="./img/menu-3.png" alt="item 3">
-                 <h3>Café coado</h3>
-                 <div class="price">R$ 15,99 <span>R$ 20,99</span></div>
-                 <a href="#" class="btn">Adicionar ao carrinho</a>
-            </div>
-            <div class="box">
-                 <img src="./img/menu-4.png" alt="item 4">
-                 <h3>Café coado</h3>
-                 <div class="price">R$ 15,99 <span>R$ 20,99</span></div>
-                 <a href="#" class="btn">Adicionar ao carrinho</a>
-            </div>
-            <div class="box">
-                 <img src="./img/menu-5.png" alt="item 5">
-                 <h3>Café coado</h3>
-                 <div class="price">R$ 15,99 <span>R$ 20,99</span></div>
-                 <a href="#" class="btn">Adicionar ao carrinho</a>
-            </div>
-            <div class="box">
-                <img src="./img/menu-6.png" alt="item 6">
-                <h3>Café coado</h3>
-                <div class="price">R$ 15,99 <span>R$ 20,99</span></div>
-                <a href="#" class="btn">Adicionar ao carrinho</a>
+        <div class="cart-footer">
+            <div class="options-toggle">
+                <button class="delivery-btn active" data-option="delivery"><i class="fa-solid fa-truck-fast"></i>
+                    Entrega</button>
+                <button class="delivery-btn" data-option="pickup"><i class="fa-solid fa-store"></i> Retirada</button>
             </div>
 
+            <div id="delivery-form-container">
+                <div class="form-group"><label for="delivery-name">Seu Nome</label><input type="text" id="delivery-name"
+                        placeholder="Nome e sobrenome" required></div>
+                <div class="form-group"><label for="delivery-phone">Seu Telefone (WhatsApp)</label><input type="tel"
+                        id="delivery-phone" placeholder="(XX) XXXXX-XXXX" maxlength="15" required></div>
+                <div class="form-group"><label for="delivery-cep">CEP</label><input type="text" id="delivery-cep"
+                        placeholder="00000-000" maxlength="9" required></div>
+                <div class="form-group"><label for="delivery-address">Endereço</label><textarea id="delivery-address"
+                        placeholder="Lote, Quadra, Numero" required></textarea>
+                </div>
+                <div class="delivery-fee-notice">Taxa de entrega fixa de R$ 8,00 para toda a cidade.</div>
+
+                <div class="payment-options-container">
+                    <h4>Forma de Pagamento</h4>
+                    <label class="payment-option selected"><input type="radio" name="payment" value="PIX" checked>
+                        PIX</label>
+                    <label class="payment-option"><input type="radio" name="payment" value="Cartão de Crédito"> Cartão
+                        de Crédito</label>
+                    <label class="payment-option"><input type="radio" name="payment" value="Cartão de Débito"> Cartão de
+                        Débito</label>
+                    <label class="payment-option"><input type="radio" name="payment" value="Dinheiro"> Dinheiro</label>
+
+                    <div id="troco-container">
+                        <div class="form-group"><label for="troco-para">Precisa de troco para quanto?</label><input
+                                type="number" id="troco-para" placeholder="Ex: 50"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="pickup-form-container" style="display: none;">
+                <div class="form-group"><label for="pickup-name">Nome para Retirada</label><input type="text"
+                        id="pickup-name" placeholder="Digite nome e sobrenome" required></div>
+                <div class="form-group">
+                    <label>Agende a Data e Hora</label>
+                    <div class="date-time-row">
+                        <input type="date" id="pickup-date" required>
+                        <select id="pickup-time" required>
+                            <option value="" disabled selected>Selecione</option>
+                            <option value="08:00">08:00</option>
+                            <option value="09:00">09:00</option>
+                            <option value="10:00">10:00</option>
+                            <option value="11:00">11:00</option>
+                            <option value="12:00">12:00</option>
+                            <option value="13:00">13:00</option>
+                            <option value="14:00">14:00</option>
+                            <option value="15:00">15:00</option>
+                            <option value="16:00">16:00</option>
+                            <option value="17:00">17:00</option>
+                            <option value="18:00">18:00</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="coupon-container"><input type="text" id="coupon-input" placeholder="Cupom de desconto"><button
+                    id="apply-coupon-btn">Aplicar</button></div>
+            <p id="coupon-feedback" class="coupon-feedback"></p>
+            <div class="cart-summary">
+                <div class="summary-line"><span>Subtotal</span><span id="cart-subtotal">R$ 0,00</span></div>
+                <div class="summary-line discount-line" style="display: none;"><span>Desconto</span><span
+                        id="cart-discount">- R$ 0,00</span></div>
+                <div class="summary-line delivery-fee-line" style="display: none;"><span>Taxa de entrega</span><span
+                        id="cart-delivery-fee">R$ 0,00</span></div>
+                <div class="summary-line total"><span>Total</span><span id="cart-total">R$ 0,00</span></div>
+            </div>
         </div>
 
+        <div class="finish-order-btn-container">
+            <button id="finish-order-btn" class="finish-order-btn" disabled><i class="fab fa-whatsapp"></i> Finalizar
+                Pedido</button>
+        </div>
+    </aside>
 
-    </section>
+    <div class="view-cart-banner">
+        <p>Total: <span id="banner-total">R$ 0,00</span></p>
+        <button class="view-cart-banner-btn">Ver Carrinho</button>
+    </div>
+
+    <footer>
+        <p>2026 - Trindade Restaurante. Todos os direitos reservados</p>
+    </footer>
 </body>
+<script src="./script.js?v=1.1"></script>
 
 </html>
