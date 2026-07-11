@@ -54,7 +54,12 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    const produtos = [
+    // Lista de produtos agora vive em products.json — pode ser editada
+    // pelo painel admin.html sem precisar mexer neste arquivo.
+    // Este array só é usado como fallback, caso o fetch falhe (ex: ao abrir
+    // o index.html localmente com duplo clique, sem servidor).
+    let produtos = [];
+    const PRODUTOS_FALLBACK = [
         {
             id: 1,
             nome: "Pizza Margherita",
@@ -143,6 +148,36 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let categoriaAtiva = "all";
     let termoBusca = "";
+
+    // Envia eventos pro Google Analytics (GA4), se estiver configurado no
+    // index.html. Se não estiver, simplesmente não faz nada — não quebra o site.
+    const rastrearEvento = (nomeEvento, parametros = {}) => {
+        if (typeof gtag === "function") {
+            gtag("event", nomeEvento, parametros);
+        }
+    };
+
+    const carregarProdutos = () => {
+        fetch("products.json")
+            .then((resposta) => {
+                if (!resposta.ok) throw new Error("Falha ao carregar products.json");
+                return resposta.json();
+            })
+            .then((dados) => {
+                produtos = dados;
+            })
+            .catch((erro) => {
+                console.warn(
+                    "Não foi possível carregar products.json, usando lista padrão.",
+                    erro,
+                );
+                produtos = PRODUTOS_FALLBACK;
+            })
+            .finally(() => {
+                filtrarEMostrarProdutos();
+                atualizarCarrinho();
+            });
+    };
 
     const formatarMoeda = (v) =>
         v.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
@@ -240,6 +275,11 @@ document.addEventListener("DOMContentLoaded", () => {
             itemNoCarrinho = carrinho.find((item) => item.id === produtoId);
         if (itemNoCarrinho) itemNoCarrinho.quantidade++;
         else carrinho.push({ ...produto, quantidade: 1 });
+        rastrearEvento("add_to_cart", {
+            item_id: produtoId,
+            item_name: produto?.nome,
+            item_category: produto?.categoria,
+        });
         atualizarCarrinho();
     };
 
@@ -410,6 +450,14 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`;
+        rastrearEvento("finalizar_pedido", {
+            tipo_entrega: tipoEntrega,
+            valor_total: total,
+            forma_pagamento:
+                tipoEntrega === "delivery"
+                    ? document.querySelector('input[name="payment"]:checked')?.value
+                    : "Na retirada",
+        });
         window.open(url, "_blank");
     };
 
@@ -438,6 +486,7 @@ document.addEventListener("DOMContentLoaded", () => {
             categoryBtns.forEach((b) => b.classList.remove("active"));
             btn.classList.add("active");
             categoriaAtiva = btn.dataset.category;
+            rastrearEvento("filtro_categoria", { categoria: categoriaAtiva });
             filtrarEMostrarProdutos();
         });
     });
@@ -508,6 +557,5 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         });
 
-    filtrarEMostrarProdutos();
-    atualizarCarrinho();
+    carregarProdutos();
 });

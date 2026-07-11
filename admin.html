@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <title>Painel de Produtos — Trindade Restaurante</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #b33a2f;
+            --secondary-color: #2d201b;
+            --accent-color: #f4a261;
+            --text-color: #2f241d;
+            --light-gray: #f8f4ee;
+            --border-color: #eadfd9;
+            --success-color: #2e8b57;
+            --error-color: #d9480f;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--light-gray);
+            color: var(--text-color);
+            line-height: 1.5;
+            padding-bottom: 3rem;
+        }
+
+        header {
+            background-color: var(--secondary-color);
+            color: #fff;
+            padding: 1.2rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+        }
+
+        header h1 {
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        header h1 i {
+            color: var(--accent-color);
+        }
+
+        header a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        main {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 1.5rem;
+        }
+
+        .aviso {
+            background: #fff;
+            border-left: 4px solid var(--accent-color);
+            padding: 1rem 1.2rem;
+            border-radius: 0.4rem;
+            margin-bottom: 1.5rem;
+            font-size: 0.92rem;
+        }
+
+        .aviso strong {
+            color: var(--primary-color);
+        }
+
+        .aviso ol {
+            margin: 0.5rem 0 0 1.2rem;
+        }
+
+        .toolbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .toolbar h2 {
+            font-size: 1.1rem;
+        }
+
+        .btn {
+            border: none;
+            border-radius: 0.5rem;
+            padding: 0.6rem 1rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            transition: 0.2s;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            filter: brightness(1.08);
+        }
+
+        .btn-secondary {
+            background: #fff;
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--primary-color);
+        }
+
+        .btn-download {
+            background: var(--success-color);
+            color: #fff;
+        }
+
+        .btn-download:hover {
+            filter: brightness(1.08);
+        }
+
+        .status-msg {
+            font-size: 0.85rem;
+            padding: 0.5rem 0;
+        }
+
+        .status-msg.pendente {
+            color: var(--error-color);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #fff;
+            border-radius: 0.6rem;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+        }
+
+        thead {
+            background: var(--secondary-color);
+            color: #fff;
+        }
+
+        th,
+        td {
+            padding: 0.7rem 0.8rem;
+            text-align: left;
+            font-size: 0.9rem;
+        }
+
+        tbody tr {
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        tbody tr:last-child {
+            border-bottom: none;
+        }
+
+        tbody tr:hover {
+            background: var(--light-gray);
+        }
+
+        td.thumb img {
+            width: 48px;
+            height: 48px;
+            object-fit: cover;
+            border-radius: 0.4rem;
+        }
+
+        td.acoes {
+            display: flex;
+            gap: 0.4rem;
+        }
+
+        .icon-btn {
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-size: 1rem;
+            padding: 0.3rem 0.4rem;
+            border-radius: 0.4rem;
+        }
+
+        .icon-btn.editar {
+            color: var(--accent-color);
+        }
+
+        .icon-btn.excluir {
+            color: var(--error-color);
+        }
+
+        .icon-btn:hover {
+            background: var(--light-gray);
+        }
+
+        .categoria-pill {
+            display: inline-block;
+            background: var(--light-gray);
+            border: 1px solid var(--border-color);
+            padding: 0.15rem 0.6rem;
+            border-radius: 999px;
+            font-size: 0.78rem;
+        }
+
+        /* Modal */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+            padding: 1rem;
+        }
+
+        .modal-overlay.show {
+            display: flex;
+        }
+
+        .modal {
+            background: #fff;
+            border-radius: 0.8rem;
+            width: 100%;
+            max-width: 480px;
+            padding: 1.5rem;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal h3 {
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+        }
+
+        .form-group {
+            display: grid;
+            gap: 0.3rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .form-group label {
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            border: 1px solid var(--border-color);
+            border-radius: 0.5rem;
+            padding: 0.6rem 0.7rem;
+            font-size: 0.92rem;
+            font-family: inherit;
+        }
+
+        .form-group textarea {
+            min-height: 70px;
+            resize: vertical;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 0.6rem;
+        }
+
+        .form-row .form-group {
+            flex: 1;
+        }
+
+        .modal-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 0.6rem;
+            margin-top: 1rem;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 3rem 1rem;
+            color: #8a7a70;
+        }
+
+        @media (max-width: 640px) {
+
+            th:nth-child(4),
+            td:nth-child(4) {
+                display: none;
+            }
+
+            table,
+            thead,
+            tbody,
+            th,
+            td,
+            tr {
+                display: block;
+            }
+
+            thead {
+                display: none;
+            }
+
+            tbody tr {
+                padding: 0.8rem;
+                display: grid;
+                grid-template-columns: 56px 1fr;
+                gap: 0.3rem 0.8rem;
+            }
+
+            td.thumb {
+                grid-row: 1 / span 3;
+            }
+
+            td.acoes {
+                grid-column: 2;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1><i class="fa-solid fa-utensils"></i> Painel de Produtos — Trindade Restaurante</h1>
+        <a href="index.html"><i class="fa-solid fa-arrow-left"></i> Voltar pro site</a>
+    </header>
+
+    <main>
+        <div class="aviso">
+            <strong>Como funciona:</strong> este painel edita a lista de produtos só aqui no seu navegador —
+            ele <u>não salva direto no site</u> (páginas estáticas como esta não têm banco de dados).
+            Depois de fazer as alterações que quiser, siga os passos:
+            <ol>
+                <li>Clique em <strong>"Baixar products.json atualizado"</strong></li>
+                <li>Substitua o arquivo <code>products.json</code> no seu repositório do GitHub pelo que foi baixado</li>
+                <li>Commit + push — em alguns minutos o site já mostra o cardápio atualizado</li>
+            </ol>
+        </div>
+
+        <div class="toolbar">
+            <h2>Produtos (<span id="contador-produtos">0</span>)</h2>
+            <div style="display: flex; gap: 0.6rem; flex-wrap: wrap;">
+                <button class="btn btn-primary" id="btn-novo"><i class="fa-solid fa-plus"></i> Novo produto</button>
+                <button class="btn btn-download" id="btn-baixar"><i class="fa-solid fa-download"></i> Baixar
+                    products.json atualizado</button>
+            </div>
+        </div>
+        <p class="status-msg" id="status-msg"></p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Nome</th>
+                    <th>Categoria</th>
+                    <th>Descrição</th>
+                    <th>Preço</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody id="tabela-produtos"></tbody>
+        </table>
+        <div class="empty-state" id="empty-state" style="display: none;">
+            <i class="fa-solid fa-box-open" style="font-size: 2.5rem;"></i>
+            <p>Nenhum produto cadastrado ainda.</p>
+        </div>
+    </main>
+
+    <div class="modal-overlay" id="modal-overlay">
+        <div class="modal">
+            <h3 id="modal-titulo">Novo Produto</h3>
+            <form id="form-produto">
+                <input type="hidden" id="produto-id">
+                <div class="form-group">
+                    <label for="produto-nome">Nome do prato</label>
+                    <input type="text" id="produto-nome" required placeholder="Ex: Pizza Calabresa">
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="produto-categoria">Categoria</label>
+                        <select id="produto-categoria" required>
+                            <option value="pizzas">Pizzas</option>
+                            <option value="massas">Massas</option>
+                            <option value="lanches">Lanches</option>
+                            <option value="sobremesas">Sobremesas</option>
+                            <option value="bebidas">Bebidas</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="produto-preco">Preço (R$)</label>
+                        <input type="number" id="produto-preco" step="0.01" min="0" required placeholder="Ex: 39.90">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="produto-imagem">URL da imagem</label>
+                    <input type="url" id="produto-imagem" required placeholder="https://...">
+                </div>
+                <div class="form-group">
+                    <label for="produto-descricao">Descrição</label>
+                    <textarea id="produto-descricao" required placeholder="Ingredientes e detalhes do prato"></textarea>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-secondary" id="btn-cancelar">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Salvar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        let produtos = [];
+        let houveAlteracoes = false;
+
+        const tabelaBody = document.getElementById("tabela-produtos");
+        const contadorElem = document.getElementById("contador-produtos");
+        const emptyState = document.getElementById("empty-state");
+        const statusMsg = document.getElementById("status-msg");
+
+        const modalOverlay = document.getElementById("modal-overlay");
+        const modalTitulo = document.getElementById("modal-titulo");
+        const form = document.getElementById("form-produto");
+        const campoId = document.getElementById("produto-id");
+        const campoNome = document.getElementById("produto-nome");
+        const campoCategoria = document.getElementById("produto-categoria");
+        const campoPreco = document.getElementById("produto-preco");
+        const campoImagem = document.getElementById("produto-imagem");
+        const campoDescricao = document.getElementById("produto-descricao");
+
+        const formatarMoeda = (v) =>
+            Number(v).toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+
+        const marcarAlteracoes = () => {
+            houveAlteracoes = true;
+            statusMsg.textContent = "Há alterações não baixadas ainda — clique em \"Baixar products.json atualizado\" quando terminar.";
+            statusMsg.classList.add("pendente");
+        };
+
+        const renderizarTabela = () => {
+            contadorElem.textContent = produtos.length;
+            emptyState.style.display = produtos.length === 0 ? "block" : "none";
+            tabelaBody.innerHTML = produtos
+                .map(
+                    (p) => `
+                    <tr data-id="${p.id}">
+                        <td class="thumb"><img src="${p.imagem}" alt="${p.nome}" loading="lazy"></td>
+                        <td>${p.nome}</td>
+                        <td><span class="categoria-pill">${p.categoria}</span></td>
+                        <td>${p.descricao}</td>
+                        <td>${formatarMoeda(p.preco)}</td>
+                        <td class="acoes">
+                            <button class="icon-btn editar" title="Editar"><i class="fa-solid fa-pen"></i></button>
+                            <button class="icon-btn excluir" title="Excluir"><i class="fa-solid fa-trash"></i></button>
+                        </td>
+                    </tr>`,
+                )
+                .join("");
+        };
+
+        const abrirModal = (produto = null) => {
+            form.reset();
+            if (produto) {
+                modalTitulo.textContent = "Editar Produto";
+                campoId.value = produto.id;
+                campoNome.value = produto.nome;
+                campoCategoria.value = produto.categoria;
+                campoPreco.value = produto.preco;
+                campoImagem.value = produto.imagem;
+                campoDescricao.value = produto.descricao;
+            } else {
+                modalTitulo.textContent = "Novo Produto";
+                campoId.value = "";
+            }
+            modalOverlay.classList.add("show");
+        };
+
+        const fecharModal = () => modalOverlay.classList.remove("show");
+
+        document.getElementById("btn-novo").addEventListener("click", () => abrirModal());
+        document.getElementById("btn-cancelar").addEventListener("click", fecharModal);
+        modalOverlay.addEventListener("click", (e) => {
+            if (e.target === modalOverlay) fecharModal();
+        });
+
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+            const dados = {
+                nome: campoNome.value.trim(),
+                categoria: campoCategoria.value,
+                preco: Number.parseFloat(campoPreco.value),
+                imagem: campoImagem.value.trim(),
+                descricao: campoDescricao.value.trim(),
+            };
+
+            if (campoId.value) {
+                const idExistente = Number.parseInt(campoId.value);
+                const index = produtos.findIndex((p) => p.id === idExistente);
+                produtos[index] = { ...dados, id: idExistente };
+            } else {
+                const novoId =
+                    produtos.length > 0
+                        ? Math.max(...produtos.map((p) => p.id)) + 1
+                        : 1;
+                produtos.push({ ...dados, id: novoId });
+            }
+
+            marcarAlteracoes();
+            renderizarTabela();
+            fecharModal();
+        });
+
+        tabelaBody.addEventListener("click", (e) => {
+            const linha = e.target.closest("tr");
+            if (!linha) return;
+            const id = Number.parseInt(linha.dataset.id);
+            const produto = produtos.find((p) => p.id === id);
+
+            if (e.target.closest(".editar")) {
+                abrirModal(produto);
+            }
+            if (e.target.closest(".excluir")) {
+                if (confirm(`Excluir "${produto.nome}" da lista?`)) {
+                    produtos = produtos.filter((p) => p.id !== id);
+                    marcarAlteracoes();
+                    renderizarTabela();
+                }
+            }
+        });
+
+        document.getElementById("btn-baixar").addEventListener("click", () => {
+            const blob = new Blob([JSON.stringify(produtos, null, 2)], {
+                type: "application/json",
+            });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = "products.json";
+            a.click();
+            URL.revokeObjectURL(url);
+            houveAlteracoes = false;
+            statusMsg.textContent = "Arquivo baixado! Agora suba ele pro seu repositório no GitHub.";
+            statusMsg.classList.remove("pendente");
+        });
+
+        window.addEventListener("beforeunload", (e) => {
+            if (houveAlteracoes) {
+                e.preventDefault();
+                e.returnValue = "";
+            }
+        });
+
+        fetch("products.json")
+            .then((r) => {
+                if (!r.ok) throw new Error("não encontrado");
+                return r.json();
+            })
+            .then((dados) => {
+                produtos = dados;
+                renderizarTabela();
+            })
+            .catch(() => {
+                statusMsg.textContent =
+                    "Não consegui carregar o products.json (isso é normal se você abriu este arquivo direto, com duplo clique — abra pelo site publicado, ou rode um servidor local).";
+                statusMsg.classList.add("pendente");
+                renderizarTabela();
+            });
+    </script>
+</body>
+
+</html>

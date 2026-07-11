@@ -342,6 +342,31 @@ O sistema envia mensagens formatadas para o WhatsApp Business com:
 
 ---
 
+## 🎛️ Painel de Produtos (admin.html)
+
+Agora os produtos vivem em um arquivo separado, `products.json`, e não mais direto no `script.js`. Isso permite usar o `admin.html` — um painel visual pra adicionar, editar e excluir produtos sem tocar em código.
+
+**Como usar:**
+1. Abra `admin.html` pelo site publicado (não funciona com duplo clique local, por causa de restrições de segurança do navegador)
+2. Adicione, edite ou exclua produtos na tela
+3. Clique em **"Baixar products.json atualizado"**
+4. Substitua o arquivo `products.json` do seu repositório GitHub pelo baixado
+5. Faça commit + push — o site atualiza sozinho
+
+⚠️ Importante: como é um site estático (sem banco de dados de verdade), o painel não salva direto — ele só gera o arquivo pra você subir. É simples, mas exige esse passo manual toda vez que mudar o cardápio.
+
+## 📊 Google Analytics
+
+O `index.html` já vem com o snippet do Google Analytics 4 pronto, faltando só o seu ID:
+1. Crie uma conta grátis em [analytics.google.com](https://analytics.google.com)
+2. Copie o ID de métricas (formato `G-XXXXXXXXXX`)
+3. Substitua o `G-XXXXXXXXXX` em duas linhas do `index.html`
+
+Com isso ativo, você recebe automaticamente eventos de:
+- `add_to_cart` — quais pratos são mais adicionados ao carrinho
+- `filtro_categoria` — quais categorias o pessoal mais clica
+- `finalizar_pedido` — quantos pedidos são finalizados, tipo de entrega e forma de pagamento
+
 ## 📈 Próximas Melhorias Sugeridas
 
 - [ ] Integração com API de pagamento (Stripe, MercadoPago)

@@ -14,6 +14,21 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <title>Trindade Restaurante</title>
+
+    <!--
+        GOOGLE ANALYTICS (GA4)
+        1. Crie uma conta grátis em https://analytics.google.com
+        2. Copie o "ID de métricas" (formato G-XXXXXXXXXX)
+        3. Substitua "G-XXXXXXXXXX" abaixo pelo seu ID real
+        Sem isso, o site funciona normal — só não envia dados de visitas.
+    -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
+    </script>
 </head>
 
 <body>
